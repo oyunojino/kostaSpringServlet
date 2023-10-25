@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +14,19 @@
 <h2>${news.title}</h2>
 <hr>
 <div class="card w-75 mx-auto">
-  <img class="card-img-top" src="${news.img}" alt="news 이미지">
+  <img class="card-img-top" src="${news.img}" alt="${news.img}">
   <div class="card-body">
     <h4 class="card-title">Date : ${news.date}</h4>
     <p class="card-text">Content : ${news.content}</p>
   </div>
 </div>
 <hr>
+<c:if test="${error != null}">
+  <div class="alert alert-danger alert-dismissible fade show mt-3">
+    error 발생 : ${error}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+</c:if>
 <a href="javascript:history.back()"><< Back</a>
 </body>
 </html>
